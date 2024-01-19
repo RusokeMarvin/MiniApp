@@ -40,8 +40,8 @@ class _HomepageState extends State<Homepage> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.group),
-              title: Text('Patients List'),
+              leading: Icon(Icons.remove_red_eye),
+              title: Text('Detector'),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.pushNamed(context, '/test');

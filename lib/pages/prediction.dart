@@ -1,106 +1,135 @@
 import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:tflite/tflite.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-class TfliteModel extends StatefulWidget {
-  const TfliteModel({Key? key}) : super(key: key);
-
+class PneumoniaDetectionPage extends StatefulWidget {
   @override
-  _TfliteModelState createState() => _TfliteModelState();
+  _PneumoniaDetectionPageState createState() => _PneumoniaDetectionPageState();
 }
 
-class _TfliteModelState extends State<TfliteModel> {
-  late File _image;
-  late List _results;
-  bool imageSelect = false;
+class _PneumoniaDetectionPageState extends State<PneumoniaDetectionPage> {
+  File? _image;
+  late String _predictionResult;
+  bool _isPredicting = false;
+
+  Future<void> _uploadImage(File image) async {
+    setState(() {
+      _isPredicting = true; // Show progress bar when predicting starts
+    });
+
+    final uri =
+        Uri.parse("https://pneumonia-ov5m.onrender.com/predict_pneumonia/");
+
+    var request = http.MultipartRequest('POST', uri)
+      ..files.add(await http.MultipartFile.fromPath('image', image.path));
+
+    try {
+      var response = await request.send();
+      if (response.statusCode == 200) {
+        final jsonResponse = await http.Response.fromStream(response);
+        final data = json.decode(jsonResponse.body);
+        setState(() {
+          _predictionResult = data['result'];
+        });
+      } else {
+        print('Error: ${response.reasonPhrase}');
+        _showErrorSnackBar('Failed to make prediction');
+      }
+    } catch (error) {
+      print('Error: $error');
+      _showErrorSnackBar('Error during prediction process');
+    } finally {
+      setState(() {
+        _isPredicting = false; // Hide progress bar when predicting completes
+      });
+    }
+  }
+
+  Future<void> _pickImage() async {
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+        _predictionResult =
+            ''; // Reset prediction result when a new image is selected
+      });
+    }
+  }
+
+  Future<void> _predictImage() async {
+    if (_image != null) {
+      await _uploadImage(_image!);
+    } else {
+      print('No image selected');
+      _showErrorSnackBar('Please select an image');
+    }
+  }
+
+  void _showErrorSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: Duration(seconds: 3),
+      ),
+    );
+  }
+
   @override
   void initState() {
     super.initState();
-    loadModel();
-  }
-
-  Future loadModel() async {
-    Tflite.close();
-    String res;
-    res = (await Tflite.loadModel(
-        model: "assets/model.tflite", labels: "assets/labels.txt"))!;
-    print("Models loading status: $res");
-  }
-
-  Future imageClassification(File image) async {
-    final List? recognitions = await Tflite.runModelOnImage(
-      path: image.path,
-      numResults: 6,
-      threshold: 0.05,
-      imageMean: 127.5,
-      imageStd: 127.5,
-    );
-    setState(() {
-      _results = recognitions!;
-      _image = image;
-      imageSelect = true;
-    });
+    _predictionResult = ''; // Initialize _predictionResult here
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Image Classification"),
+        backgroundColor: Colors.blue,
+        title:
+            Text('Pneumonia Detection', style: TextStyle(color: Colors.white)),
       ),
-      body: ListView(
-        children: [
-          (imageSelect)
-              ? Container(
-                  margin: const EdgeInsets.all(10),
-                  child: Image.file(_image),
-                )
-              : Container(
-                  margin: const EdgeInsets.all(10),
-                  child: const Opacity(
-                    opacity: 0.8,
-                    child: Center(
-                      child: Text("No image selected"),
-                    ),
-                  ),
-                ),
-          SingleChildScrollView(
-            child: Column(
-              children: (imageSelect)
-                  ? _results.map((result) {
-                      return Card(
-                        child: Container(
-                          margin: EdgeInsets.all(10),
-                          child: Text(
-                            "${result['label']} - ${result['confidence'].toStringAsFixed(2)}",
-                            style: const TextStyle(
-                                color: Colors.red, fontSize: 20),
-                          ),
-                        ),
-                      );
-                    }).toList()
-                  : [],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _image == null
+                ? Text('Select an image')
+                : Image.file(_image!, height: 150),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () async {
+                await _pickImage();
+              },
+              child: Text('Select Image'),
             ),
-          )
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: pickImage,
-        tooltip: "Pick Image",
-        child: const Icon(Icons.image),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () async {
+                await _predictImage();
+              },
+              child: Text('Predict'),
+            ),
+            SizedBox(height: 20),
+            _isPredicting
+                ? LinearProgressIndicator() // Progress bar
+                : Container(),
+            SizedBox(height: 20),
+            _predictionResult.isNotEmpty
+                ? Text('Prediction Result: $_predictionResult')
+                : Container(),
+          ],
+        ),
       ),
     );
   }
+}
 
-  Future pickImage() async {
-    final ImagePicker _picker = ImagePicker();
-    final XFile? pickedFile = await _picker.pickImage(
-      source: ImageSource.gallery,
-    );
-    File image = File(pickedFile!.path);
-    imageClassification(image);
-  }
+void main() {
+  runApp(MaterialApp(
+    home: PneumoniaDetectionPage(),
+  ));
 }

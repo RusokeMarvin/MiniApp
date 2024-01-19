@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         '/homepage': (context) => Homepage(),
         '/patientform': (context) => Patientform(),
         '/patientlist': (context) => Patientlist(),
-        '/test': (context) => TfliteModel(),
+        '/test': (context) => PneumoniaDetectionPage(),
       },
     );
   }
