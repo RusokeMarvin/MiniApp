@@ -44,7 +44,7 @@ class _HomepageState extends State<Homepage> {
               title: Text('Detector'),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.pushNamed(context, '/test');
+                Navigator.pushNamed(context, '/infections');
               },
             ),
             ListTile(

@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
 class Patientform extends StatefulWidget {
   const Patientform({Key? key});
@@ -36,23 +33,6 @@ class MyCustomForm extends StatefulWidget {
 
 class _MyCustomFormState extends State<MyCustomForm> {
   final _formKey = GlobalKey<FormState>();
-  late ImagePicker _imagePicker;
-  XFile? _imageFile;
-
-  @override
-  void initState() {
-    super.initState();
-    _imagePicker = ImagePicker();
-  }
-
-  Future<void> _getImage() async {
-    final XFile? imageFile =
-        await _imagePicker.pickImage(source: ImageSource.gallery);
-
-    setState(() {
-      _imageFile = imageFile;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +41,13 @@ class _MyCustomFormState extends State<MyCustomForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          TextFormField(
+            decoration: const InputDecoration(
+              icon: const Icon(Icons.numbers),
+              hintText: 'Assign ID',
+              labelText: 'ID',
+            ),
+          ),
           TextFormField(
             decoration: const InputDecoration(
               icon: const Icon(Icons.person),
@@ -82,18 +69,13 @@ class _MyCustomFormState extends State<MyCustomForm> {
               labelText: 'Dob',
             ),
           ),
-          // Image input section
-          ElevatedButton(
-            onPressed: _getImage,
-            child: Text('Select Image'),
+          TextFormField(
+            decoration: const InputDecoration(
+              icon: const Icon(Icons.person),
+              hintText: 'Enter symptoms',
+              labelText: 'Symptoms',
+            ),
           ),
-          _imageFile != null
-              ? Image.file(
-                  File(_imageFile!.path),
-                  height: 100.0,
-                  width: 100.0,
-                )
-              : Container(),
           Container(
             padding: const EdgeInsets.only(left: 150.0, top: 40.0),
             child: ElevatedButton(

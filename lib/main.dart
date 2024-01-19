@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/pages/homepage.dart';
+import 'package:hello_flutter/pages/infections.dart';
 import 'package:hello_flutter/pages/patientform.dart';
 import 'package:hello_flutter/pages/patientlist.dart';
 import 'package:hello_flutter/pages/prediction.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         '/patientform': (context) => Patientform(),
         '/patientlist': (context) => Patientlist(),
         '/test': (context) => PneumoniaDetectionPage(),
+        '/infections': (context) => Infections(),
       },
     );
   }
