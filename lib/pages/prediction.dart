@@ -20,7 +20,7 @@ class _PneumoniaDetectionPageState extends State<PneumoniaDetectionPage> {
     });
 
     final uri =
-        Uri.parse("https://pneumonia-ov5m.onrender.com/predict_pneumonia/");
+        Uri.parse("https://pneumonia-1.onrender.com/predict_pneumonia/");
 
     var request = http.MultipartRequest('POST', uri)
       ..files.add(await http.MultipartFile.fromPath('image', image.path));

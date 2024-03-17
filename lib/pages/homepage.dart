@@ -27,9 +27,13 @@ class _HomepageState extends State<Homepage> {
         child: Column(
           children: [
             DrawerHeader(
-              child: Image.asset(
-                'lib/images/doctor2.jpg',
-                height: 50,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(105),
+                child: Image.asset(
+                  'lib/images/doctor2.jpg',
+                  height: 100,
+                  width: 100,
+                ),
               ),
             ),
             ListTile(
@@ -102,7 +106,7 @@ class _HomepageState extends State<Homepage> {
                 child: (Row(
                   children: [
                     Image.asset(
-                      'lib/icons/pneumonia.png',
+                      'lib/images/doctor.png',
                       height: 100,
                       width: 100,
                     ),
