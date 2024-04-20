@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "743667337992",
+    "project_id": "lrtis-b3bac",
+    "storage_bucket": "lrtis-b3bac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:743667337992:android:a1b6d9dd0f02e1ec73babd",
+        "android_client_info": {
+          "package_name": "com.example.hello_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5ckCfpknlqsTIqYyfJG-mGkF-cgTsi4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
