@@ -12,10 +12,6 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CurvedNavigationBar(
-          backgroundColor: Color.fromARGB(255, 205, 223, 238),
-          color: Colors.blue,
-          items: [Icon(Icons.home), Icon(Icons.group), Icon(Icons.person)]),
       appBar: AppBar(
         title: Text(
           'LRTIS DETECTOR',
@@ -40,15 +36,15 @@ class _HomepageState extends State<Homepage> {
               leading: Icon(Icons.home),
               title: Text('Home'),
               onTap: () {
-                Navigator.pushNamed(context, '/homepage');
+                Navigator.pushNamed(context, '/home');
               },
             ),
             ListTile(
-              leading: Icon(Icons.remove_red_eye),
-              title: Text('Detector'),
+              leading: Icon(Icons.person),
+              title: Text('Profile'),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.pushNamed(context, '/infections');
+                Navigator.pushNamed(context, '/profile');
               },
             ),
             ListTile(

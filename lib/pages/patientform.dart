@@ -1,4 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(const Patientform());
+}
 
 class Patientform extends StatefulWidget {
   const Patientform({Key? key});
@@ -33,6 +41,11 @@ class MyCustomForm extends StatefulWidget {
 
 class _MyCustomFormState extends State<MyCustomForm> {
   final _formKey = GlobalKey<FormState>();
+  final idController = TextEditingController();
+  final nameController = TextEditingController();
+  final phoneController = TextEditingController();
+  final dobController = TextEditingController();
+  final symptomsController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +55,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           TextFormField(
+            controller: idController,
             decoration: const InputDecoration(
               icon: const Icon(Icons.numbers),
               hintText: 'Assign ID',
@@ -49,6 +63,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
             ),
           ),
           TextFormField(
+            controller: nameController,
             decoration: const InputDecoration(
               icon: const Icon(Icons.person),
               hintText: 'Enter your name',
@@ -56,6 +71,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
             ),
           ),
           TextFormField(
+            controller: phoneController,
             decoration: const InputDecoration(
               icon: const Icon(Icons.phone),
               hintText: 'Enter a phone number',
@@ -63,6 +79,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
             ),
           ),
           TextFormField(
+            controller: dobController,
             decoration: const InputDecoration(
               icon: const Icon(Icons.calendar_today),
               hintText: 'Enter your date of birth',
@@ -70,6 +87,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
             ),
           ),
           TextFormField(
+            controller: symptomsController,
             decoration: const InputDecoration(
               icon: const Icon(Icons.person),
               hintText: 'Enter symptoms',
@@ -80,7 +98,17 @@ class _MyCustomFormState extends State<MyCustomForm> {
             padding: const EdgeInsets.only(left: 150.0, top: 40.0),
             child: ElevatedButton(
               child: const Text('Submit'),
-              onPressed: null,
+              onPressed: () {
+                CollectionReference collRef =
+                    FirebaseFirestore.instance.collection('client');
+                collRef.add({
+                  'id': idController.text,
+                  'name': nameController.text,
+                  'phone': phoneController.text,
+                  'dob': dobController.text,
+                  'symptoms': symptomsController.text,
+                });
+              },
             ),
           ),
         ],

@@ -11,6 +11,7 @@ class _InfectionsState extends State<Infections> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 205, 223, 238),
       appBar: AppBar(
         title: Text('ALL LRTIs'),
         backgroundColor: Colors.blue,
@@ -48,20 +49,25 @@ class _InfectionsState extends State<Infections> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 10.0),
-                    child: Container(
-                      padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Colors.blue[200],
-                      ),
-                      child: Row(
-                        children: [
-                          Image.asset(
-                            'lib/icons/tuberculosis.png',
-                            height: 50,
-                          ),
-                          Text('Tuberculosis'),
-                        ],
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/testtb');
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Colors.blue[200],
+                        ),
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              'lib/icons/tuberculosis.png',
+                              height: 50,
+                            ),
+                            Text('Tuberculosis'),
+                          ],
+                        ),
                       ),
                     ),
                   ),
