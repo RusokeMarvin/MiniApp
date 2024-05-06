@@ -98,16 +98,34 @@ class _MyCustomFormState extends State<MyCustomForm> {
             padding: const EdgeInsets.only(left: 150.0, top: 40.0),
             child: ElevatedButton(
               child: const Text('Submit'),
-              onPressed: () {
+              onPressed: () async {
+                // Access Firestore instance
                 CollectionReference collRef =
                     FirebaseFirestore.instance.collection('client');
-                collRef.add({
+
+                // Add data to Firestore
+                await collRef.add({
                   'id': idController.text,
                   'name': nameController.text,
                   'phone': phoneController.text,
                   'dob': dobController.text,
                   'symptoms': symptomsController.text,
                 });
+
+                // Show SnackBar
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Form submitted'),
+                    duration: Duration(seconds: 2), // Adjust as needed
+                  ),
+                );
+
+                // Clear form fields
+                idController.clear();
+                nameController.clear();
+                phoneController.clear();
+                dobController.clear();
+                symptomsController.clear();
               },
             ),
           ),

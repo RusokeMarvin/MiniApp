@@ -39,14 +39,21 @@ class _HomeState extends State<Home> {
       drawer: Drawer(
         child: Column(
           children: [
-            DrawerHeader(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(105),
-                child: Image.asset(
-                  'lib/images/doctor2.jpg',
-                  height: 100,
-                  width: 100,
+            UserAccountsDrawerHeader(
+              accountName: Text('Rusoke Marvin'),
+              accountEmail: Text('rusokemarvin@gmail.com'),
+              currentAccountPicture: CircleAvatar(
+                child: ClipOval(
+                  child: Image.asset(
+                    'lib/images/doctor2.jpg',
+                    width: 90,
+                    height: 90,
+                    fit: BoxFit.cover,
+                  ),
                 ),
+              ),
+              decoration: BoxDecoration(
+                color: Colors.blue,
               ),
             ),
             ListTile(
@@ -67,6 +74,10 @@ class _HomeState extends State<Home> {
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('Settings'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/settings');
+              },
             ),
             ListTile(
               leading: Icon(Icons.person),

@@ -11,6 +11,7 @@ import 'package:hello_flutter/pages/WelcomeScreen.dart';
 import 'package:hello_flutter/pages/prediction.dart';
 import 'package:hello_flutter/pages/predicttb.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:hello_flutter/pages/settings.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
         '/test': (context) => PneumoniaDetection(),
         '/testtb': (context) => TbDetection(),
         '/profile': (context) => Profile(),
+        '/settings': (context) => SettingsPage(),
       },
     );
   }

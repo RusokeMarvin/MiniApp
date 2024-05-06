@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Profile extends StatelessWidget {
-  const Profile({super.key});
+  const Profile({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +16,21 @@ class Profile extends StatelessWidget {
       drawer: Drawer(
         child: Column(
           children: [
-            DrawerHeader(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(105),
-                child: Image.asset(
-                  'lib/images/doctor2.jpg',
-                  height: 100,
-                  width: 100,
+            UserAccountsDrawerHeader(
+              accountName: Text('Rusoke Marvin'),
+              accountEmail: Text('rusokemarvin@gmail.com'),
+              currentAccountPicture: CircleAvatar(
+                child: ClipOval(
+                  child: Image.asset(
+                    'lib/images/doctor2.jpg',
+                    width: 90,
+                    height: 90,
+                    fit: BoxFit.cover,
+                  ),
                 ),
+              ),
+              decoration: BoxDecoration(
+                color: Colors.blue,
               ),
             ),
             ListTile(
@@ -44,6 +51,10 @@ class Profile extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('Settings'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/settings');
+              },
             ),
             ListTile(
               leading: Icon(Icons.person),
@@ -57,21 +68,65 @@ class Profile extends StatelessWidget {
         ),
       ),
       backgroundColor: Color.fromARGB(255, 205, 223, 238),
-      body: Container(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 90, vertical: 30),
-          child: Column(
-            children: [
-              Container(
-                height: 150,
-                width: 150,
-                decoration:
-                    BoxDecoration(color: Colors.blue, shape: BoxShape.circle),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              radius: 60,
+              backgroundImage: AssetImage('lib/images/doctor2.jpg'),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Rusoke Marvin',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
               ),
-              Text('Rusoke Marvin'),
-              Text('rusokemarvin@gmail.com'),
-            ],
-          ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              'rusokemarvin@gmail.com',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey,
+              ),
+            ),
+            SizedBox(height: 20),
+            Card(
+              elevation: 3,
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              child: Padding(
+                padding: EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      'Additional Information',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    ListTile(
+                      leading: Icon(Icons.person),
+                      title: Text('Age: 22'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.person_outline),
+                      title: Text('Gender: Male'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.location_on),
+                      title: Text('Location: Uganda'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
