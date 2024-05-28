@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:hello_flutter/pages/explainability.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite_v2/tflite_v2.dart';
 
@@ -79,24 +80,33 @@ class _PneumoniaDetectionState extends State<PneumoniaDetection> {
         ),
         backgroundColor: Colors.blue,
       ),
-      body: Center(
-        child: _loading
-            ? CircularProgressIndicator()
-            : _output != null
-                ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Image.file(
-                        _image!,
-                        height: 300,
-                      ),
-                      SizedBox(height: 20),
-                      Text('Prediction: ${_output![0]['label']}'),
-                      Text(
-                          'Confidence: ${(_output![0]['confidence'] * 100).toStringAsFixed(2)}%'),
-                    ],
-                  )
-                : Text('No image selected'),
+      body: ListView(
+        // Wrap the entire body with ListView
+        children: <Widget>[
+          Center(
+            child: _loading
+                ? CircularProgressIndicator()
+                : _output != null
+                    ? Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Image.file(
+                            _image!,
+                            height: 200,
+                            width: 330,
+                          ),
+                          Text('Prediction: ${_output![0]['label']}'),
+                          Text(
+                              'Confidence: ${(_output![0]['confidence'] * 100).toStringAsFixed(2)}%'),
+                          Explainability()
+                        ],
+                      )
+                    : Text('No image selected'),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue[100],

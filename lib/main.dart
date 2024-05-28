@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/pages/Predict.dart';
 import 'package:hello_flutter/pages/Profile.dart';
+import 'package:hello_flutter/pages/explainability.dart';
 import 'package:hello_flutter/pages/explainable.dart';
 import 'package:hello_flutter/pages/home.dart';
 import 'package:hello_flutter/pages/homepage.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
         '/testtb': (context) => TbDetection(),
         '/profile': (context) => Profile(),
         '/settings': (context) => SettingsPage(),
+        '/explain': (context) => Explainability(),
       },
     );
   }
