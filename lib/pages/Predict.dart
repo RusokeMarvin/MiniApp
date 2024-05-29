@@ -38,15 +38,25 @@ class _PneumoniaDetectionState extends State<PneumoniaDetection> {
       _loading = true;
     });
 
-    var output = await Tflite.runModelOnImage(
-      path: _image!.path,
-      numResults: 2, // Number of classification results
-    );
+    try {
+      var output = await Tflite.runModelOnImage(
+        path: _image!.path,
+        numResults: 2, // Number of classification results
+        imageMean: 0.0,
+        imageStd: 255.0,
+        threshold: 0.2, // Set a threshold to filter out predictions
+        asynch: true,
+      );
 
-    setState(() {
-      _output = output;
-      _loading = false;
-    });
+      setState(() {
+        _output = output;
+        _loading = false;
+      });
+
+      print('Prediction output: $_output'); // Debugging statement
+    } catch (e) {
+      print('Failed to run model on image: $e');
+    }
   }
 
   Future<void> _getImage() async {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Explainability extends StatelessWidget {
+class Explainnormal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -16,7 +16,7 @@ class Explainability extends StatelessWidget {
             ),
           ),
           Image.asset(
-            'lib/images/explain.png',
+            'lib/images/explain2.png',
             fit: BoxFit.cover,
           ),
           SizedBox(height: 16.0),
