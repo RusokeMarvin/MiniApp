@@ -1,8 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:hello_flutter/pages/explainability.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite_v2/tflite_v2.dart';
+import 'package:hello_flutter/pages/explainability.dart';
+import 'package:hello_flutter/pages/explainnormal.dart';
 
 class PneumoniaDetection extends StatefulWidget {
   @override
@@ -27,8 +28,8 @@ class _PneumoniaDetectionState extends State<PneumoniaDetection> {
 
   Future<void> loadModel() async {
     await Tflite.loadModel(
-      model: 'assets/vgg19model.tflite', // Path to your TensorFlow Lite model
-      labels: 'assets/labels.txt', // Path to labels file
+      model: 'assets/vgg19model.tflite',
+      labels: 'assets/labels.txt',
     );
   }
 
@@ -41,10 +42,10 @@ class _PneumoniaDetectionState extends State<PneumoniaDetection> {
     try {
       var output = await Tflite.runModelOnImage(
         path: _image!.path,
-        numResults: 2, // Number of classification results
+        numResults: 2,
         imageMean: 0.0,
         imageStd: 255.0,
-        threshold: 0.2, // Set a threshold to filter out predictions
+        threshold: 0.2,
         asynch: true,
       );
 
@@ -53,7 +54,7 @@ class _PneumoniaDetectionState extends State<PneumoniaDetection> {
         _loading = false;
       });
 
-      print('Prediction output: $_output'); // Debugging statement
+      print('Prediction output: $_output');
     } catch (e) {
       print('Failed to run model on image: $e');
     }
@@ -80,6 +81,19 @@ class _PneumoniaDetectionState extends State<PneumoniaDetection> {
     super.dispose();
   }
 
+  Widget _getExplanationWidget() {
+    if (_output != null && _output!.isNotEmpty) {
+      int labelIndex = _output![0]['index'];
+      if (labelIndex == 1) {
+        // Index 1 corresponds to Pneumonia
+        return Explainability();
+      } else {
+        return Explainnormal();
+      }
+    }
+    return Container();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +105,6 @@ class _PneumoniaDetectionState extends State<PneumoniaDetection> {
         backgroundColor: Colors.blue,
       ),
       body: ListView(
-        // Wrap the entire body with ListView
         children: <Widget>[
           Center(
             child: _loading
@@ -111,7 +124,7 @@ class _PneumoniaDetectionState extends State<PneumoniaDetection> {
                           Text('Prediction: ${_output![0]['label']}'),
                           Text(
                               'Confidence: ${(_output![0]['confidence'] * 100).toStringAsFixed(2)}%'),
-                          Explainability()
+                          _getExplanationWidget(),
                         ],
                       )
                     : Text('No image selected'),
