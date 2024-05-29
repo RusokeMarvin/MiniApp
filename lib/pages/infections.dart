@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_flutter/pages/Drawer.dart';
 
 class Infections extends StatefulWidget {
   const Infections({Key? key});
@@ -16,6 +17,7 @@ class _InfectionsState extends State<Infections> {
         title: Text('ALL LRTIs'),
         backgroundColor: Colors.blue,
       ),
+      drawer: CustomDrawer(),
       body: Padding(
         padding: const EdgeInsets.only(left: 3.5),
         child: Container(

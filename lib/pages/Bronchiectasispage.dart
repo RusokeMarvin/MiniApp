@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Pneumoniapage extends StatelessWidget {
-  const Pneumoniapage({super.key});
+class Bronchiectasispage extends StatelessWidget {
+  const Bronchiectasispage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class Pneumoniapage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            'What is Pneumonia',
+            'What is Bronchiectasis',
             style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
@@ -20,7 +20,7 @@ class Pneumoniapage extends StatelessWidget {
           Column(
             children: [
               Text(
-                "Pneumonia is a common and potentially serious infection of the lungs that can affect people of all ages. Here's a general overview:",
+                "Bronchiectasis is a common and potentially serious infection of the lungs that can affect people of all ages. Here's a general overview:",
                 style: TextStyle(
                   fontSize: 16.0,
                 ),
@@ -29,7 +29,7 @@ class Pneumoniapage extends StatelessWidget {
           ),
           SizedBox(height: 8.0),
           Image.asset(
-            'lib/images/pneumoniacover.jpg',
+            'lib/images/bronchiectatiscover.jpg',
             fit: BoxFit.cover,
           ),
           SizedBox(height: 16.0),
@@ -37,7 +37,7 @@ class Pneumoniapage extends StatelessWidget {
           Column(
             children: [
               Text(
-                'Pneumonia is an infection that inflames the air sacs in one or both lungs. The air sacs may fill with fluid or pus (purulent material), causing cough with phlegm or pus, fever, chills, and difficulty breathing. Pneumonia can range in severity from mild to life-threatening and can affect people of all ages, but it is most dangerous in infants, young children, older adults, and people with weakened immune systems.',
+                'Bronchiectasis is a chronic condition characterized by abnormal widening and thickening of the bronchial tubes, leading to a buildup of mucus and recurrent infections in the lungs. Over time, the damage to the bronchial walls can impair lung function and lead to symptoms such as chronic cough, excessive mucus production, and recurrent respiratory infections. Bronchiectasis is often a result of damage to the airways caused by underlying conditions such as cystic fibrosis, recurrent lung infections, or immune system disorders.',
                 style: TextStyle(
                   fontSize: 16.0,
                 ),
@@ -56,6 +56,32 @@ class Pneumoniapage extends StatelessWidget {
           ),
           SizedBox(height: 6.0),
           Text(
+            'Cystic Fibrosis',
+            style: TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            ' Cystic fibrosis is a genetic disorder that affects the mucus-producing glands, leading to thick and sticky mucus that can block the airways and promote bacterial growth.',
+            style: TextStyle(
+              fontSize: 16.0,
+            ),
+          ),
+          Text(
+            'Recurrent Lung Infections',
+            style: TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            "Recurrent or severe lung infections, such as pneumonia or tuberculosis, can cause damage to the bronchial walls and lead to bronchiectasis.",
+            style: TextStyle(
+              fontSize: 16.0,
+            ),
+          ),
+          Text(
             'Bacterial Infections',
             style: TextStyle(
               fontSize: 24.0,
@@ -63,46 +89,20 @@ class Pneumoniapage extends StatelessWidget {
             ),
           ),
           Text(
-            'Streptococcus pneumoniae is the most common cause of bacterial pneumonia. Other bacteria such as Haemophilus influenzae and Mycoplasma pneumoniae can also cause pneumonia.',
+            "Bacterial infections can also cause acute bronchitis, although they are less common than viral infections. Bacteria such as Streptococcus pneumoniae or Haemophilus influenzae may be responsible.",
             style: TextStyle(
               fontSize: 16.0,
             ),
           ),
           Text(
-            'Viral Infections',
+            'Immune System Disorders',
             style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
-            "Viruses such as influenza (flu), respiratory syncytial virus (RSV), and rhinovirus can cause viral pneumonia.",
-            style: TextStyle(
-              fontSize: 16.0,
-            ),
-          ),
-          Text(
-            'Fungal Infections',
-            style: TextStyle(
-              fontSize: 24.0,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          Text(
-            "Fungi such as Pneumocystis jirovecii can cause pneumonia, especially in people with weakened immune systems.",
-            style: TextStyle(
-              fontSize: 16.0,
-            ),
-          ),
-          Text(
-            'Aspiration',
-            style: TextStyle(
-              fontSize: 24.0,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          Text(
-            "Inhaling food, liquids, vomit, or other foreign substances into the lungs can lead to aspiration pneumonia.",
+            "Disorders that affect the immune system, such as rheumatoid arthritis or HIV/AIDS, can increase the risk of developing bronchiectasis by impairing the body's ability to fight off infections.",
             style: TextStyle(
               fontSize: 16.0,
             ),
