@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:hello_flutter/pages/explainabilityTB.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite_v2/tflite_v2.dart';
+import 'package:hello_flutter/pages/explainnormal.dart';
 
 class TbDetection extends StatefulWidget {
   @override
@@ -38,15 +40,25 @@ class _TbDetectionState extends State<TbDetection> {
       _loading = true;
     });
 
-    var output = await Tflite.runModelOnImage(
-      path: _image!.path,
-      numResults: 2, // Number of classification results
-    );
+    try {
+      var output = await Tflite.runModelOnImage(
+        path: _image!.path,
+        numResults: 2,
+        imageMean: 0.0,
+        imageStd: 255.0,
+        threshold: 0.2,
+        asynch: true,
+      );
 
-    setState(() {
-      _output = output;
-      _loading = false;
-    });
+      setState(() {
+        _output = output;
+        _loading = false;
+      });
+
+      print('Prediction output: $_output');
+    } catch (e) {
+      print('Failed to run model on image: $e');
+    }
   }
 
   Future<void> _getImage() async {
@@ -70,31 +82,55 @@ class _TbDetectionState extends State<TbDetection> {
     super.dispose();
   }
 
+  Widget _getExplanationWidget() {
+    if (_output != null && _output!.isNotEmpty) {
+      int labelIndex = _output![0]['index'];
+      if (labelIndex == 1) {
+        // Index 1 corresponds to Pneumonia
+        return ExplainabilityTB();
+      } else {
+        return Explainnormal();
+      }
+    }
+    return Container();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text(
+          'TB Detection',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.blue,
-        title: Text('TB Detection', style: TextStyle(color: Colors.white)),
       ),
-      body: Center(
-        child: _loading
-            ? CircularProgressIndicator()
-            : _output != null
-                ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Image.file(
-                        _image!,
-                        height: 300,
-                      ),
-                      SizedBox(height: 20),
-                      Text('Prediction: ${_output![0]['label']}'),
-                      Text(
-                          'Confidence: ${(_output![0]['confidence'] * 100).toStringAsFixed(2)}%'),
-                    ],
-                  )
-                : Text('No image selected'),
+      body: ListView(
+        children: <Widget>[
+          Center(
+            child: _loading
+                ? CircularProgressIndicator()
+                : _output != null
+                    ? Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Image.file(
+                            _image!,
+                            height: 200,
+                            width: 330,
+                          ),
+                          Text('Prediction: ${_output![0]['label']}'),
+                          Text(
+                              'Confidence: ${(_output![0]['confidence'] * 100).toStringAsFixed(2)}%'),
+                          _getExplanationWidget(),
+                        ],
+                      )
+                    : Text('No image selected'),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue[100],
