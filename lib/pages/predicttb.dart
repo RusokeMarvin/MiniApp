@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/pages/explainabilityTB.dart';
+import 'package:hello_flutter/pages/explainnormalTB.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite_v2/tflite_v2.dart';
 import 'package:hello_flutter/pages/explainnormal.dart';
@@ -89,7 +90,7 @@ class _TbDetectionState extends State<TbDetection> {
         // Index 1 corresponds to Pneumonia
         return ExplainabilityTB();
       } else {
-        return Explainnormal();
+        return ExplainnormalTB();
       }
     }
     return Container();

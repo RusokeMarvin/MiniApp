@@ -28,7 +28,7 @@ class _PneumoniaDetectionState extends State<PneumoniaDetection> {
 
   Future<void> loadModel() async {
     await Tflite.loadModel(
-      model: 'assets/vgg19model.tflite',
+      model: 'assets/Lastpneumoniavgg19.tflite',
       labels: 'assets/labels.txt',
     );
   }
