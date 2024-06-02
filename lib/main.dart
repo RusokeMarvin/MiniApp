@@ -12,6 +12,7 @@ import 'package:hello_flutter/pages/WelcomeScreen.dart';
 import 'package:hello_flutter/pages/prediction.dart';
 import 'package:hello_flutter/pages/predicttb.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:hello_flutter/pages/scans.dart';
 import 'package:hello_flutter/pages/settings.dart';
 import 'firebase_options.dart';
 
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
         '/profile': (context) => Profile(),
         '/settings': (context) => SettingsPage(),
         '/explain': (context) => Explainability(),
+        '/scans': (context) => ScanOptionsPage(),
       },
     );
   }

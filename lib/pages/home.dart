@@ -5,6 +5,7 @@ import 'package:hello_flutter/pages/Profile.dart';
 import 'package:hello_flutter/pages/homepage.dart';
 import 'package:hello_flutter/pages/infections.dart';
 import 'package:hello_flutter/pages/patientlist.dart';
+import 'package:hello_flutter/pages/scans.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -19,7 +20,7 @@ class _HomeState extends State<Home> {
   final screens = [
     Homepage(),
     Patientlist(),
-    Infections(),
+    ScanOptionsPage(),
   ];
 
   @override

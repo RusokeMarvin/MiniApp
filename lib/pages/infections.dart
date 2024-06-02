@@ -17,7 +17,6 @@ class _InfectionsState extends State<Infections> {
         title: Text('ALL LRTIs'),
         backgroundColor: Colors.blue,
       ),
-      drawer: CustomDrawer(),
       body: Padding(
         padding: const EdgeInsets.only(left: 3.5),
         child: Container(
