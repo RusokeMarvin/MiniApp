@@ -2,8 +2,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite_v2/tflite_v2.dart';
-import 'package:hello_flutter/pages/EXPLAINABILITY/explainability.dart';
-import 'package:hello_flutter/pages/EXPLAINABILITY/explainnormal.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class PneumoniaDetectionexplain extends StatefulWidget {
   @override
@@ -15,6 +15,7 @@ class _PneumoniaDetectionexplainState extends State<PneumoniaDetectionexplain> {
   File? _image;
   bool _loading = false;
   List<dynamic>? _output;
+  String? _gradCamImageUrl;
 
   @override
   void initState() {
@@ -34,15 +35,14 @@ class _PneumoniaDetectionexplainState extends State<PneumoniaDetectionexplain> {
     );
   }
 
-  Future<void> _predictImage() async {
-    if (_image == null) return;
+  Future<void> _predictImage(File imageFile) async {
     setState(() {
       _loading = true;
     });
 
     try {
       var output = await Tflite.runModelOnImage(
-        path: _image!.path,
+        path: imageFile.path,
         numResults: 2,
         imageMean: 0.0,
         imageStd: 255.0,
@@ -56,6 +56,9 @@ class _PneumoniaDetectionexplainState extends State<PneumoniaDetectionexplain> {
       });
 
       print('Prediction output: $_output');
+
+      // Fetch GradCAM image from Django
+      _fetchGradCamImage(imageFile);
     } catch (e) {
       print('Failed to run model on image: $e');
     }
@@ -73,13 +76,39 @@ class _PneumoniaDetectionexplainState extends State<PneumoniaDetectionexplain> {
       }
     });
 
-    _predictImage();
+    if (_image != null) {
+      _predictImage(_image!);
+    }
   }
 
-  @override
-  void dispose() {
-    Tflite.close();
-    super.dispose();
+  Future<void> _fetchGradCamImage(File imageFile) async {
+    try {
+      var request = http.MultipartRequest(
+        'POST',
+        Uri.parse('https://explainability.pythonanywhere.com/'),
+      );
+
+      request.files.add(
+        await http.MultipartFile.fromPath('image', imageFile.path),
+      );
+
+      var response = await request.send();
+
+      if (response.statusCode == 200) {
+        var responseData = jsonDecode(await response.stream.bytesToString());
+        String? camFileUrl = responseData['cam_file_url'];
+        if (camFileUrl != null) {
+          setState(() {
+            _gradCamImageUrl =
+                'https://explainability.pythonanywhere.com$camFileUrl';
+          });
+        }
+      } else {
+        print('Failed to fetch GradCAM image: ${response.reasonPhrase}');
+      }
+    } catch (e) {
+      print('Failed to fetch GradCAM image: $e');
+    }
   }
 
   Widget _getExplanationWidget() {
@@ -87,9 +116,9 @@ class _PneumoniaDetectionexplainState extends State<PneumoniaDetectionexplain> {
       int labelIndex = _output![0]['index'];
       if (labelIndex == 1) {
         // Index 1 corresponds to Pneumonia
-        return Explainability();
+        return Text('Explanation: Pneumonia detected');
       } else {
-        return Explainnormal();
+        return Text('Explanation: No pneumonia detected');
       }
     }
     return Container();
@@ -126,6 +155,12 @@ class _PneumoniaDetectionexplainState extends State<PneumoniaDetectionexplain> {
                           Text(
                               'Confidence: ${(_output![0]['confidence'] * 100).toStringAsFixed(2)}%'),
                           _getExplanationWidget(),
+                          if (_gradCamImageUrl != null)
+                            Image.network(
+                              _gradCamImageUrl!,
+                              height: 200,
+                              width: 330,
+                            ),
                         ],
                       )
                     : Text('No image selected'),

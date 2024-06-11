@@ -4,7 +4,6 @@ import 'package:hello_flutter/pages/EXPLAINABILITY/explainabilityTB.dart';
 import 'package:hello_flutter/pages/EXPLAINABILITY/explainnormalTB.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite_v2/tflite_v2.dart';
-import 'package:hello_flutter/pages/EXPLAINABILITY/explainnormal.dart';
 
 class TbDetection extends StatefulWidget {
   @override
