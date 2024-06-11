@@ -1,17 +1,17 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:hello_flutter/pages/explainabilityTB.dart';
-import 'package:hello_flutter/pages/explainnormalTB.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite_v2/tflite_v2.dart';
-import 'package:hello_flutter/pages/explainnormal.dart';
+import 'package:hello_flutter/pages/EXPLAINABILITY/explainability.dart';
+import 'package:hello_flutter/pages/EXPLAINABILITY/explainnormal.dart';
 
-class TbDetection extends StatefulWidget {
+class PneumoniaDetectionexplain extends StatefulWidget {
   @override
-  _TbDetectionState createState() => _TbDetectionState();
+  _PneumoniaDetectionexplainState createState() =>
+      _PneumoniaDetectionexplainState();
 }
 
-class _TbDetectionState extends State<TbDetection> {
+class _PneumoniaDetectionexplainState extends State<PneumoniaDetectionexplain> {
   File? _image;
   bool _loading = false;
   List<dynamic>? _output;
@@ -29,9 +29,8 @@ class _TbDetectionState extends State<TbDetection> {
 
   Future<void> loadModel() async {
     await Tflite.loadModel(
-      model:
-          'assets/Tuberculosisvgg19.tflite', // Path to your TensorFlow Lite model
-      labels: 'assets/labelstb.txt', // Path to labels file
+      model: 'assets/Lastpneumoniavgg19.tflite',
+      labels: 'assets/labels.txt',
     );
   }
 
@@ -88,9 +87,9 @@ class _TbDetectionState extends State<TbDetection> {
       int labelIndex = _output![0]['index'];
       if (labelIndex == 1) {
         // Index 1 corresponds to Pneumonia
-        return ExplainabilityTB();
+        return Explainability();
       } else {
-        return ExplainnormalTB();
+        return Explainnormal();
       }
     }
     return Container();
@@ -101,7 +100,7 @@ class _TbDetectionState extends State<TbDetection> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'TB Detection',
+          'Pneumonia Detection',
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.blue,

@@ -2,8 +2,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite_v2/tflite_v2.dart';
-import 'package:hello_flutter/pages/explainability.dart';
-import 'package:hello_flutter/pages/explainnormal.dart';
+import 'package:hello_flutter/pages/EXPLAINABILITY/explainability.dart';
+import 'package:hello_flutter/pages/EXPLAINABILITY/explainnormal.dart';
 
 class PneumoniaDetection extends StatefulWidget {
   @override

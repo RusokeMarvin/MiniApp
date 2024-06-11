@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hello_flutter/pages/Drawer.dart';
+import 'package:hello_flutter/pages/OTHERS/Drawer.dart';
 
 class ScanOptionsPage extends StatelessWidget {
   @override
@@ -54,7 +54,7 @@ class ScanOptionsPage extends StatelessWidget {
                   shadowColor: Colors.black,
                 ),
                 onPressed: () {
-                  // Add your logic here
+                  Navigator.pushNamed(context, '/infectionsexplain');
                 },
                 child: Text('Deep Scan'),
               ),

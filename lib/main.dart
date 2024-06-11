@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:hello_flutter/pages/Predict.dart';
-import 'package:hello_flutter/pages/Profile.dart';
-import 'package:hello_flutter/pages/explainability.dart';
+import 'package:hello_flutter/pages/INFECTIONS/Infectionsexplain.dart';
+import 'package:hello_flutter/pages/PREDICTIONS/Predict.dart';
+import 'package:hello_flutter/pages/OTHERS/Profile.dart';
+import 'package:hello_flutter/pages/EXPLAINABILITY/explainability.dart';
+import 'package:hello_flutter/pages/PREDICTIONS/predictexpl.dart';
 import 'package:hello_flutter/pages/explainable.dart';
-import 'package:hello_flutter/pages/home.dart';
-import 'package:hello_flutter/pages/homepage.dart';
-import 'package:hello_flutter/pages/infections.dart';
-import 'package:hello_flutter/pages/patientform.dart';
-import 'package:hello_flutter/pages/patientlist.dart';
+import 'package:hello_flutter/pages/HOME/home.dart';
+import 'package:hello_flutter/pages/HOME/homepage.dart';
+import 'package:hello_flutter/pages/INFECTIONS/infections.dart';
+import 'package:hello_flutter/pages/PATIENTS/patientform.dart';
+import 'package:hello_flutter/pages/PATIENTS/patientlist.dart';
 import 'package:hello_flutter/pages/WelcomeScreen.dart';
-import 'package:hello_flutter/pages/prediction.dart';
-import 'package:hello_flutter/pages/predicttb.dart';
+import 'package:hello_flutter/pages/OTHERS/prediction.dart';
+import 'package:hello_flutter/pages/PREDICTIONS/predicttb.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hello_flutter/pages/scans.dart';
-import 'package:hello_flutter/pages/settings.dart';
+import 'package:hello_flutter/pages/OTHERS/settings.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -44,6 +46,8 @@ class MyApp extends StatelessWidget {
         '/settings': (context) => SettingsPage(),
         '/explain': (context) => Explainability(),
         '/scans': (context) => ScanOptionsPage(),
+        '/infectionsexplain': (context) => Infectionsexplain(),
+        '/test1': (context) => PneumoniaDetectionexplain(),
       },
     );
   }

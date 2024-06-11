@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:hello_flutter/pages/Bronchiectasispage.dart';
-import 'package:hello_flutter/pages/BronchitisPage.dart';
-import 'package:hello_flutter/pages/Drawer.dart';
-import 'package:hello_flutter/pages/Pneumoniapage.dart';
-import 'package:hello_flutter/pages/tuberculosis.dart';
+import 'package:hello_flutter/pages/DISEASES/Bronchiectasispage.dart';
+import 'package:hello_flutter/pages/DISEASES/BronchitisPage.dart';
+import 'package:hello_flutter/pages/OTHERS/Drawer.dart';
+import 'package:hello_flutter/pages/DISEASES/Pneumoniapage.dart';
+import 'package:hello_flutter/pages/DISEASES/tuberculosis.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});

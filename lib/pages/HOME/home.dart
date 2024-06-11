@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:hello_flutter/pages/Drawer.dart';
-import 'package:hello_flutter/pages/Profile.dart';
-import 'package:hello_flutter/pages/homepage.dart';
-import 'package:hello_flutter/pages/infections.dart';
-import 'package:hello_flutter/pages/patientlist.dart';
+import 'package:hello_flutter/pages/OTHERS/Drawer.dart';
+import 'package:hello_flutter/pages/OTHERS/Profile.dart';
+import 'package:hello_flutter/pages/HOME/homepage.dart';
+import 'package:hello_flutter/pages/INFECTIONS/infections.dart';
+import 'package:hello_flutter/pages/PATIENTS/patientlist.dart';
 import 'package:hello_flutter/pages/scans.dart';
 
 class Home extends StatefulWidget {
