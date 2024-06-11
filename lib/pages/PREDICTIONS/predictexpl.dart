@@ -1,5 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:hello_flutter/pages/EXPLAINABILITY/DEEPEXPLAIN/deepexplain.dart';
+import 'package:hello_flutter/pages/EXPLAINABILITY/DEEPEXPLAIN/deepexplainnormal.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite_v2/tflite_v2.dart';
 import 'dart:convert';
@@ -116,9 +118,9 @@ class _PneumoniaDetectionexplainState extends State<PneumoniaDetectionexplain> {
       int labelIndex = _output![0]['index'];
       if (labelIndex == 1) {
         // Index 1 corresponds to Pneumonia
-        return Text('Explanation: Pneumonia detected');
+        return Explainabilitydeep();
       } else {
-        return Text('Explanation: No pneumonia detected');
+        return Explainnormaldeep();
       }
     }
     return Container();
@@ -154,7 +156,6 @@ class _PneumoniaDetectionexplainState extends State<PneumoniaDetectionexplain> {
                           Text('Prediction: ${_output![0]['label']}'),
                           Text(
                               'Confidence: ${(_output![0]['confidence'] * 100).toStringAsFixed(2)}%'),
-                          _getExplanationWidget(),
                           if (_gradCamImageUrl != null)
                             Image.network(
                               _gradCamImageUrl!,
@@ -165,6 +166,7 @@ class _PneumoniaDetectionexplainState extends State<PneumoniaDetectionexplain> {
                       )
                     : Text('No image selected'),
           ),
+          _getExplanationWidget(),
         ],
       ),
       floatingActionButton: FloatingActionButton(

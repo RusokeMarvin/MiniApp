@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Explainability extends StatelessWidget {
+class Explainabilitydeep extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -8,12 +8,13 @@ class Explainability extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Image.asset(
-            'lib/images/explain.png',
-            fit: BoxFit.cover,
+          Text(
+            'Explainability',
+            style: TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          SizedBox(height: 16.0),
-          SizedBox(height: 8.0),
           Column(
             children: [
               Text(

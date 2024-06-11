@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Explainability extends StatelessWidget {
+class Explainnormaldeep extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -8,12 +8,13 @@ class Explainability extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Image.asset(
-            'lib/images/explain.png',
-            fit: BoxFit.cover,
+          Text(
+            'Explainability',
+            style: TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          SizedBox(height: 16.0),
-          SizedBox(height: 8.0),
           Column(
             children: [
               Text(
@@ -56,7 +57,7 @@ class Explainability extends StatelessWidget {
             height: 8,
           ),
           Text(
-            'Recommendations',
+            'Prevention of Pneumonia',
             style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
@@ -64,40 +65,53 @@ class Explainability extends StatelessWidget {
           ),
           SizedBox(height: 6.0),
           Text(
-            'Antibiotics',
+            'Get vaccinated. ',
             style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
-            'These medicines are used to treat bacterial pneumonia. It may take time to identify the type of bacteria causing your pneumonia and to choose the best antibiotic to treat it. If your symptoms do not improve, your doctor may recommend a different antibiotic.',
+            'Vaccines are available to prevent some types of pneumonia and the flu. Talk with your doctor about getting these shots. The vaccination guidelines have changed over time so make sure to review your vaccination status with your doctor even if you recall previously receiving a pneumonia vaccine.',
             style: TextStyle(
               fontSize: 16.0,
             ),
           ),
           Text(
-            'Cough medicine',
+            'Make sure children get vaccinated.',
             style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
-            "This medicine may be used to calm your cough so that you can rest. Because coughing helps loosen and move fluid from your lungs, it's a good idea not to eliminate your cough completely. In addition, you should know that very few studies have looked at whether over-the-counter cough medicines lessen coughing caused by pneumonia. If you want to try a cough suppressant, use the lowest dose that helps you rest.",
+            "Doctors recommend a different pneumonia vaccine for children younger than age 2 and for children ages 2 to 5 years who are at particular risk of pneumococcal disease. Children who attend a group child care center should also get the vaccine. Doctors also recommend flu shots for children older than 6 months.",
             style: TextStyle(
               fontSize: 16.0,
             ),
           ),
           Text(
-            'Fever reducers/pain relievers',
+            'Practice good hygiene',
             style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
-            "You may take these as needed for fever and discomfort. These include drugs such as aspirin, ibuprofen (Advil, Motrin IB, others) and acetaminophen (Tylenol, others).",
+            "To protect yourself against respiratory infections that sometimes lead to pneumonia, wash your hands regularly or use an alcohol-based hand sanitizer.",
+            style: TextStyle(
+              fontSize: 16.0,
+            ),
+          ),
+          Text(
+            "Don't smoke",
+            style: TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            "Smoking damages your lungs' natural defenses against respiratory infections.",
             style: TextStyle(
               fontSize: 16.0,
             ),
