@@ -3,6 +3,7 @@ import 'package:hello_flutter/pages/INFECTIONS/Infectionsexplain.dart';
 import 'package:hello_flutter/pages/PREDICTIONS/Predict.dart';
 import 'package:hello_flutter/pages/OTHERS/Profile.dart';
 import 'package:hello_flutter/pages/EXPLAINABILITY/explainability.dart';
+import 'package:hello_flutter/pages/PREDICTIONS/multipredict.dart';
 import 'package:hello_flutter/pages/PREDICTIONS/predictexpl.dart';
 import 'package:hello_flutter/pages/explainable.dart';
 import 'package:hello_flutter/pages/HOME/home.dart';
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
         '/scans': (context) => ScanOptionsPage(),
         '/infectionsexplain': (context) => Infectionsexplain(),
         '/test1': (context) => PneumoniaDetectionexplain(),
+        '/test2': (context) => MultiDetection(),
       },
     );
   }

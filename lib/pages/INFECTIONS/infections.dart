@@ -116,6 +116,34 @@ class _InfectionsState extends State<Infections> {
                   ),
                 ],
               ),
+              SizedBox(
+                height: 8,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/test2');
+                },
+                child: Row(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.blue[200],
+                      ),
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            'lib/icons/multidisease.png',
+                            height: 50,
+                          ),
+                          Text('Multi-Disease'),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
