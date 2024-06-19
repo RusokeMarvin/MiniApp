@@ -6,6 +6,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:tflite_v2/tflite_v2.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:path/path.dart' as path;
 
 class PneumoniaDetectionexplain extends StatefulWidget {
   @override
@@ -18,6 +22,7 @@ class _PneumoniaDetectionexplainState extends State<PneumoniaDetectionexplain> {
   bool _loading = false;
   List<dynamic>? _output;
   String? _gradCamImageUrl;
+  double _progress = 0.0;
 
   @override
   void initState() {
@@ -40,6 +45,7 @@ class _PneumoniaDetectionexplainState extends State<PneumoniaDetectionexplain> {
   Future<void> _predictImage(File imageFile) async {
     setState(() {
       _loading = true;
+      _progress = 0.2;
     });
 
     try {
@@ -54,15 +60,20 @@ class _PneumoniaDetectionexplainState extends State<PneumoniaDetectionexplain> {
 
       setState(() {
         _output = output;
-        _loading = false;
+        _progress = 0.5;
       });
 
       print('Prediction output: $_output');
 
       // Fetch GradCAM image from Django
-      _fetchGradCamImage(imageFile);
+      await _fetchGradCamImage(imageFile);
     } catch (e) {
       print('Failed to run model on image: $e');
+    } finally {
+      setState(() {
+        _loading = false;
+        _progress = 1.0;
+      });
     }
   }
 
@@ -113,6 +124,46 @@ class _PneumoniaDetectionexplainState extends State<PneumoniaDetectionexplain> {
     }
   }
 
+  Future<void> _downloadImage() async {
+    if (_gradCamImageUrl != null) {
+      try {
+        final response = await http.get(Uri.parse(_gradCamImageUrl!));
+        if (response.statusCode == 200) {
+          final directory = await getExternalStorageDirectory();
+          final filePath = path.join(directory!.path, 'grad_cam_image.jpg');
+          final file = File(filePath);
+          await file.writeAsBytes(response.bodyBytes);
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Image downloaded to $filePath')),
+          );
+        } else {
+          print('Failed to download image: ${response.reasonPhrase}');
+        }
+      } catch (e) {
+        print('Failed to download image: $e');
+      }
+    }
+  }
+
+  Future<void> _shareImage() async {
+    if (_gradCamImageUrl != null) {
+      try {
+        final response = await http.get(Uri.parse(_gradCamImageUrl!));
+        if (response.statusCode == 200) {
+          final directory = await getTemporaryDirectory();
+          final filePath = path.join(directory.path, 'grad_cam_image.jpg');
+          final file = File(filePath);
+          await file.writeAsBytes(response.bodyBytes);
+          Share.shareFiles([filePath], text: 'Grad-CAM Image');
+        } else {
+          print('Failed to share image: ${response.reasonPhrase}');
+        }
+      } catch (e) {
+        print('Failed to share image: $e');
+      }
+    }
+  }
+
   Widget _getExplanationWidget() {
     if (_output != null && _output!.isNotEmpty) {
       int labelIndex = _output![0]['index'];
@@ -135,12 +186,41 @@ class _PneumoniaDetectionexplainState extends State<PneumoniaDetectionexplain> {
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.blue,
+        actions: [
+          if (_gradCamImageUrl != null)
+            IconButton(
+              icon: Icon(Icons.download),
+              onPressed: _downloadImage,
+            ),
+          if (_gradCamImageUrl != null)
+            IconButton(
+              icon: Icon(Icons.share),
+              onPressed: _shareImage,
+            ),
+        ],
       ),
       body: ListView(
         children: <Widget>[
           Center(
             child: _loading
-                ? CircularProgressIndicator()
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      CircularProgressIndicator(),
+                      SizedBox(height: 20),
+                      LinearPercentIndicator(
+                        width: MediaQuery.of(context).size.width - 50,
+                        animation: true,
+                        lineHeight: 20.0,
+                        animationDuration: 2500,
+                        percent: _progress,
+                        center:
+                            Text("${(_progress * 100).toStringAsFixed(1)}%"),
+                        linearStrokeCap: LinearStrokeCap.roundAll,
+                        progressColor: Colors.green,
+                      ),
+                    ],
+                  )
                 : _output != null
                     ? Column(
                         mainAxisAlignment: MainAxisAlignment.center,
