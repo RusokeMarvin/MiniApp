@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hello_flutter/pages/DISEASES/Bronchiectasispage.dart';
 import 'package:hello_flutter/pages/DISEASES/BronchitisPage.dart';
 import 'package:hello_flutter/pages/OTHERS/Drawer.dart';
@@ -17,6 +18,7 @@ class _HomepageState extends State<Homepage> {
   int _pageIndex = 0; // Keep track of the selected page index
   final GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   String _selectedContent = 'none'; // Track which content to display
+  String _userName = ''; // Store the user's name
 
   // Method to get the appropriate content based on the selected type
   Widget _getSelectedContent() {
@@ -35,6 +37,20 @@ class _HomepageState extends State<Homepage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _getUserName(); // Fetch the user's name when the widget is initialized
+  }
+
+  // Method to get the logged-in user's name
+  Future<void> _getUserName() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    setState(() {
+      _userName = user?.displayName ?? user?.email ?? 'User';
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -48,7 +64,6 @@ class _HomepageState extends State<Homepage> {
       backgroundColor: Color.fromARGB(255, 205, 223, 238),
       body: SafeArea(
         child: SingleChildScrollView(
-          // Wrap in SingleChildScrollView
           child: Column(
             children: [
               Padding(
@@ -66,7 +81,7 @@ class _HomepageState extends State<Homepage> {
                         ),
                         SizedBox(height: 8),
                         Text(
-                          'Dr Rusoke Marvin',
+                          _userName,
                           style: TextStyle(fontSize: 20),
                         ),
                       ],

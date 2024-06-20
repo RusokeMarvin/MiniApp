@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_flutter/pages/AUTHENTICATION/loginScreen.dart';
 import 'package:hello_flutter/pages/INFECTIONS/Infectionsexplain.dart';
 import 'package:hello_flutter/pages/PREDICTIONS/Predict.dart';
 import 'package:hello_flutter/pages/OTHERS/Profile.dart';
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
         '/infectionsexplain': (context) => Infectionsexplain(),
         '/test1': (context) => PneumoniaDetectionexplain(),
         '/test2': (context) => MultiDetection(),
+        '/login': (context) => loginScreen(),
       },
     );
   }

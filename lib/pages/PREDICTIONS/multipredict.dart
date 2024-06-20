@@ -29,7 +29,7 @@ class _MultiDetectionState extends State<MultiDetection> {
 
   Future<void> loadModel() async {
     await Tflite.loadModel(
-      model: 'assets/LastpneumoniaTBvgg19.tflite',
+      model: 'assets/LastpneumoniaTB20vgg19.tflite',
       labels: 'assets/multilabels.txt',
     );
   }
