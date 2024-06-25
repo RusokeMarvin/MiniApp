@@ -25,7 +25,7 @@ I used firebase realtime database where i was able to export my words.json into 
 
 ## APP INSTALLATION COMMANDS(commands in bracket)
 1. Open Terminal
-2. Clone the Repository(git clone https://github.com/username/repository.git)
+2. Clone the Repository(https://github.com/RusokeMarvin/MiniApp.git) OR (just download the folder as a zip file from here)
 3. Navigate to the Project Directory(cd MiniApp)
 4. Install Dependencies(flutter pub get) or (Goto pubspec.yaml file and press ctrl+s): incase of any dependency conflicts adjust on the dependency versions
 5.  Run the Flutter App(flutter run)
