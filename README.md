@@ -1,16 +1,33 @@
-# MiniApp# hello_flutter
+# MiniApp
+This is a Simple Word Game and below are the Actions/functionalities required:
+o Users can input a word and the app checks if it’s a valid word (using a predefined list of words stored in Firebase).
+o Displays a score based on the number of valid words input by the user.
+o Provides feedback for correct and incorrect words.
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## FIREBASE INTEGRATION
+I used firebase realtime database where i was able to export my words.json into it. The file contains the following data whish is needed to get 10/10 scores;
+{
+  "words": {
+    "0": "apple",
+    "1": "banana",
+    "2": "cherry",
+    "3": "mango",
+    "4": "pineapple",
+    "5": "lemon",
+    "6": "matermelon",
+    "7": "pawpaw",
+    "8": "strawberry",
+    "9": "avocados"
+  }
+}
 
-A few resources to get you started if this is your first Flutter project:
+## APP INSTALLATION COMMANDS(commands in bracket)
+1. Open Terminal
+2. Clone the Repository(git clone https://github.com/username/repository.git)
+3. Navigate to the Project Directory(cd MiniApp)
+4. Install Dependencies(flutter pub get) or (Goto pubspec.yaml file and press ctrl+s): incase of any dependency conflicts adjust on the dependency versions
+5.  Run the Flutter App(flutter run)
+6.  To get highest scores, use the fruit names above
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
