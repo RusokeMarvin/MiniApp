@@ -1,8 +1,8 @@
 # MiniApp
 This is a Simple Word Game and below are the Actions/functionalities required:
-o Users can input a word and the app checks if it’s a valid word (using a predefined list of words stored in Firebase).
-o Displays a score based on the number of valid words input by the user.
-o Provides feedback for correct and incorrect words.
+1. Users can input a word and the app checks if it’s a valid word (using a predefined list of words stored in Firebase).
+2. Displays a score based on the number of valid words input by the user.
+3. Provides feedback for correct and incorrect words.
 
 
 
@@ -37,7 +37,7 @@ I used firebase realtime database where i was able to export my words.json into 
 email: marvinrusoke@gmail.com
 password: #Marvinbreezy4
 
-SAMPLE UI DESIGNS
+SAMPLE UI DESIGNS FROM THE APP
 ![Screenshot_20240625-104726](https://github.com/RusokeMarvin/MiniApp/assets/101735380/569a30bb-5c28-4ada-b569-1b3f033df221)
 ![Screenshot_20240625-105116](https://github.com/RusokeMarvin/MiniApp/assets/101735380/b82ae761-6371-4366-9f85-7d6e9030f4e3)
 ![Screenshot_20240625-105101](https://github.com/RusokeMarvin/MiniApp/assets/101735380/3f88b97d-3882-41fd-ad66-75ee4ff1dce8)
