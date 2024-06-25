@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hello_flutter/pages/OTHERS/Drawer.dart';
+import 'package:MiniApp/pages/OTHERS/Drawer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,10 +22,10 @@ class _PatientlistState extends State<Patientlist> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'PATIENTLIST',
+          'ACTIVE PLAYERS',
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Color.fromARGB(148, 12, 50, 70),
       ),
       drawer: CustomDrawer(),
       backgroundColor: Color.fromARGB(255, 205, 223, 238),
@@ -46,18 +46,12 @@ class _PatientlistState extends State<Patientlist> {
               columns: [
                 DataColumn(label: Text('ID')),
                 DataColumn(label: Text('Name')),
-                DataColumn(label: Text('Phone')),
-                DataColumn(label: Text('DOB')),
-                DataColumn(label: Text('Symptoms')),
               ],
               rows: clients
                   .map(
                     (client) => DataRow(cells: [
                       DataCell(Text(client['id'].toString())),
                       DataCell(Text(client['name'].toString())),
-                      DataCell(Text(client['phone'].toString())),
-                      DataCell(Text(client['dob'].toString())),
-                      DataCell(Text(client['symptoms'].toString())),
                     ]),
                   )
                   .toList(),

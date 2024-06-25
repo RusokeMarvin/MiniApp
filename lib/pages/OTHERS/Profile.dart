@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hello_flutter/pages/OTHERS/Drawer.dart';
+import 'package:MiniApp/pages/OTHERS/Drawer.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key});
@@ -12,7 +12,7 @@ class Profile extends StatelessWidget {
           'USER PROFILE',
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Color.fromARGB(148, 12, 50, 70),
       ),
       drawer: CustomDrawer(),
       backgroundColor: Color.fromARGB(255, 205, 223, 238),
@@ -23,7 +23,7 @@ class Profile extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 60,
-              backgroundImage: AssetImage('lib/images/doctor2.jpg'),
+              backgroundImage: AssetImage('lib/images/marvin.jpeg'),
             ),
             SizedBox(height: 20),
             Text(

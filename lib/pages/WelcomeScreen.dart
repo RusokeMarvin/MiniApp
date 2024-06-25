@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hello_flutter/pages/AUTHENTICATION/regScreen.dart';
+import 'package:MiniApp/pages/AUTHENTICATION/regScreen.dart';
 
 import 'AUTHENTICATION/loginScreen.dart';
 
@@ -14,8 +14,8 @@ class WelcomeScreen extends StatelessWidget {
         width: double.infinity,
         decoration: const BoxDecoration(
             gradient: LinearGradient(colors: [
-          Color.fromARGB(255, 133, 186, 230),
-          Colors.blue,
+          Color.fromARGB(255, 214, 133, 11),
+          Color.fromARGB(255, 12, 50, 70),
         ])),
         child: Column(children: [
           const Padding(

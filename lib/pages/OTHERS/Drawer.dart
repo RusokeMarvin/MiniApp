@@ -17,7 +17,7 @@ class CustomDrawer extends StatelessWidget {
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
                 child: Image.asset(
-                  'lib/images/doctor2.jpg',
+                  'lib/images/marvin.jpeg',
                   width: 90,
                   height: 90,
                   fit: BoxFit.cover,
@@ -25,7 +25,7 @@ class CustomDrawer extends StatelessWidget {
               ),
             ),
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: Color.fromARGB(148, 12, 50, 70),
             ),
           ),
           ListTile(
@@ -50,10 +50,6 @@ class CustomDrawer extends StatelessWidget {
               Navigator.pop(context);
               Navigator.pushNamed(context, '/settings');
             },
-          ),
-          ListTile(
-            leading: Icon(Icons.person),
-            title: Text('Account'),
           ),
           ListTile(
             leading: Icon(Icons.logout),

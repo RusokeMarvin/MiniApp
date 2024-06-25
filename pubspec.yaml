@@ -1,4 +1,4 @@
-name: hello_flutter
+name: MiniApp
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -47,17 +47,10 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^3.0.1
   curved_navigation_bar: ^1.0.3
-  image_picker: ^1.0.7
-  http: ^1.2.0
-  image: ^4.0.17
-  tflite_v2: ^1.0.0
-  tflite_flutter: ^0.10.4
   cloud_firestore: ^4.3.2
   firebase_core: ^2.4.1
-  percent_indicator: ^4.2.3
-  path_provider: ^2.1.3
-  share_plus: ^7.2.2
   firebase_auth: ^4.0.0
+  firebase_database: ^10.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -74,12 +67,6 @@ flutter:
   assets:
     - lib/images/
     - lib/icons/
-    - assets/labels.txt
-    - assets/labelstb.txt
-    - assets/Lastpneumoniavgg19.tflite
-    - assets/Tuberculosisvgg19.tflite
-    - assets/LastpneumoniaTB20vgg19.tflite
-    - assets/multilabels.txt
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

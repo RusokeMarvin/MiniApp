@@ -22,7 +22,7 @@ class _SettingsPageState extends State<SettingsPage> {
           'SETTINGS',
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Color.fromARGB(148, 12, 50, 70),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),

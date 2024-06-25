@@ -50,8 +50,8 @@ class _RegScreenState extends State<RegScreen> {
             width: double.infinity,
             decoration: const BoxDecoration(
               gradient: LinearGradient(colors: [
-                Color.fromARGB(255, 205, 223, 238),
-                Colors.blue,
+                Color.fromARGB(255, 214, 133, 11),
+                Color.fromARGB(255, 12, 50, 70),
               ]),
             ),
             child: const Padding(
@@ -78,124 +78,126 @@ class _RegScreenState extends State<RegScreen> {
               width: double.infinity,
               child: Padding(
                 padding: const EdgeInsets.only(left: 18.0, right: 18),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextField(
-                      controller: _nameController,
-                      decoration: const InputDecoration(
-                          suffixIcon: Icon(
-                            Icons.check,
-                            color: Colors.grey,
-                          ),
-                          label: Text(
-                            'Full Name',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue,
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextField(
+                        controller: _nameController,
+                        decoration: const InputDecoration(
+                            suffixIcon: Icon(
+                              Icons.check,
+                              color: Colors.grey,
                             ),
-                          )),
-                    ),
-                    TextField(
-                      controller: _emailController,
-                      decoration: const InputDecoration(
-                          suffixIcon: Icon(
-                            Icons.check,
-                            color: Colors.grey,
-                          ),
-                          label: Text(
-                            'Phone or Gmail',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue,
-                            ),
-                          )),
-                    ),
-                    TextField(
-                      controller: _passwordController,
-                      decoration: const InputDecoration(
-                          suffixIcon: Icon(
-                            Icons.visibility_off,
-                            color: Colors.grey,
-                          ),
-                          label: Text(
-                            'Password',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue,
-                            ),
-                          )),
-                    ),
-                    TextField(
-                      controller: _confirmPasswordController,
-                      decoration: const InputDecoration(
-                          suffixIcon: Icon(
-                            Icons.visibility_off,
-                            color: Colors.grey,
-                          ),
-                          label: Text(
-                            'Confirm Password',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue,
-                            ),
-                          )),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const SizedBox(
-                      height: 70,
-                    ),
-                    GestureDetector(
-                      onTap: _register,
-                      child: Container(
-                        height: 55,
-                        width: 300,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          gradient: const LinearGradient(colors: [
-                            Color.fromARGB(255, 205, 223, 238),
-                            Colors.blue,
-                          ]),
-                        ),
-                        child: const Center(
-                          child: Text(
-                            'SIGN UP',
-                            style: TextStyle(
+                            label: Text(
+                              'Full Name',
+                              style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                color: Colors.white),
+                                color: Color.fromARGB(255, 214, 133, 11),
+                              ),
+                            )),
+                      ),
+                      TextField(
+                        controller: _emailController,
+                        decoration: const InputDecoration(
+                            suffixIcon: Icon(
+                              Icons.check,
+                              color: Colors.grey,
+                            ),
+                            label: Text(
+                              'Phone or Gmail',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 214, 133, 11),
+                              ),
+                            )),
+                      ),
+                      TextField(
+                        controller: _passwordController,
+                        decoration: const InputDecoration(
+                            suffixIcon: Icon(
+                              Icons.visibility_off,
+                              color: Colors.grey,
+                            ),
+                            label: Text(
+                              'Password',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 214, 133, 11),
+                              ),
+                            )),
+                      ),
+                      TextField(
+                        controller: _confirmPasswordController,
+                        decoration: const InputDecoration(
+                            suffixIcon: Icon(
+                              Icons.visibility_off,
+                              color: Colors.grey,
+                            ),
+                            label: Text(
+                              'Confirm Password',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 214, 133, 11),
+                              ),
+                            )),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const SizedBox(
+                        height: 70,
+                      ),
+                      GestureDetector(
+                        onTap: _register,
+                        child: Container(
+                          height: 55,
+                          width: 300,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            gradient: const LinearGradient(colors: [
+                              Color.fromARGB(255, 214, 133, 11),
+                              Color.fromARGB(255, 12, 50, 70),
+                            ]),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              'SIGN UP',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  color: Colors.white),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 80,
-                    ),
-                    const Align(
-                      alignment: Alignment.bottomRight,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            "Don't have account?",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.grey),
-                          ),
-                          Text(
-                            "Sign up",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 17,
-                                color: Colors.black),
-                          ),
-                        ],
+                      const SizedBox(
+                        height: 80,
                       ),
-                    )
-                  ],
+                      const Align(
+                        alignment: Alignment.bottomRight,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              "Don't have account?",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey),
+                            ),
+                            Text(
+                              "Sign up",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 17,
+                                  color: Colors.black),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
