@@ -7,7 +7,7 @@ This is a Simple Word Game and below are the Actions/functionalities required:
 
 
 ## FIREBASE INTEGRATION
-I used firebase realtime database where i was able to export my words.json into it. The file contains the following data whish is needed to get 10/10 scores;
+I used firebase realtime database where i was able to import my words.json into it. The file contains the following data whish is needed to get 10/10 scores;
 {
   "words": {
     "0": "apple",
