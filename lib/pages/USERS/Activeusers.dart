@@ -6,17 +6,17 @@ import 'package:MiniApp/pages/OTHERS/Drawer.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const Patientlist());
+  runApp(const Users());
 }
 
-class Patientlist extends StatefulWidget {
-  const Patientlist({Key? key}) : super(key: key);
+class Users extends StatefulWidget {
+  const Users({Key? key}) : super(key: key);
 
   @override
-  State<Patientlist> createState() => _PatientlistState();
+  State<Users> createState() => _UsersState();
 }
 
-class _PatientlistState extends State<Patientlist> {
+class _UsersState extends State<Users> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
