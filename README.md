@@ -37,7 +37,7 @@ I used firebase realtime database where i was able to export my words.json into 
 email: marvinrusoke@gmail.com
 password: #Marvinbreezy4
 
-SAMPLE UI DESIGNS FROM THE APP
+## SAMPLE UI DESIGNS FROM THE APP
 ![Screenshot_20240625-111234](https://github.com/RusokeMarvin/MiniApp/assets/101735380/45f4a5d3-56f6-4e6d-8a7c-b07a6ee80cd8)
 ![Screenshot_20240625-105116](https://github.com/RusokeMarvin/MiniApp/assets/101735380/b82ae761-6371-4366-9f85-7d6e9030f4e3)
 ![Screenshot_20240625-105101](https://github.com/RusokeMarvin/MiniApp/assets/101735380/3f88b97d-3882-41fd-ad66-75ee4ff1dce8)
