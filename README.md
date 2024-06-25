@@ -31,3 +31,6 @@ I used firebase realtime database where i was able to export my words.json into 
 5.  Run the Flutter App(flutter run)
 6.  To get highest scores, use the fruit names above
 
+
+SAMPLE UI DESIGNS![2100719229](https://github.com/RusokeMarvin/MiniApp/assets/101735380/ad693576-49de-4a19-a5a5-d0659a6585ed)
+
