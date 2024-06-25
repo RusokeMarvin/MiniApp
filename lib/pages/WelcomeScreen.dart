@@ -20,9 +20,9 @@ class WelcomeScreen extends StatelessWidget {
         child: Column(children: [
           const Padding(
             padding: EdgeInsets.only(top: 200.0),
-            child: Image(
-              image: AssetImage('lib/images/doctor.png'),
-              height: 100,
+            child: CircleAvatar(
+              radius: 60,
+              backgroundImage: AssetImage('lib/images/unnamed.webp'),
             ),
           ),
           const SizedBox(
