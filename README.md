@@ -31,6 +31,20 @@ I used firebase realtime database where i was able to export my words.json into 
 5.  Run the Flutter App(flutter run)
 6.  To get highest scores, use the fruit names above
 
+## AUTHENTICATION
+1. Create an account using the register page and you will be automatically logged in
+2. OR login use my credentials below:
+email: marvinrusoke@gmail.com
+password: #Marvinbreezy4
 
-SAMPLE UI DESIGNS![2100719229](https://github.com/RusokeMarvin/MiniApp/assets/101735380/ad693576-49de-4a19-a5a5-d0659a6585ed)
+SAMPLE UI DESIGNS
+![Screenshot_20240625-104726](https://github.com/RusokeMarvin/MiniApp/assets/101735380/569a30bb-5c28-4ada-b569-1b3f033df221)
+![Screenshot_20240625-105116](https://github.com/RusokeMarvin/MiniApp/assets/101735380/b82ae761-6371-4366-9f85-7d6e9030f4e3)
+![Screenshot_20240625-105101](https://github.com/RusokeMarvin/MiniApp/assets/101735380/3f88b97d-3882-41fd-ad66-75ee4ff1dce8)
+![Screenshot_20240625-105045](https://github.com/RusokeMarvin/MiniApp/assets/101735380/48a143a1-bdc1-428c-bbbc-f888708364f7)
+![Screenshot_20240625-104904](https://github.com/RusokeMarvin/MiniApp/assets/101735380/dc05ee04-50e1-42c9-b450-026e4c99703d)
+![Screenshot_20240625-104900](https://github.com/RusokeMarvin/MiniApp/assets/101735380/7399fafb-aa40-4d8f-8ab5-16da85f5a55d)
+![Screenshot_20240625-104737](https://github.com/RusokeMarvin/MiniApp/assets/101735380/66b3e0d3-b1b2-4972-82b4-1fe466dbb4e1)
+![Screenshot_20240625-104731](https://github.com/RusokeMarvin/MiniApp/assets/101735380/9e7fa369-f661-4b10-b846-6bc4bdd4e3de)
+
 
