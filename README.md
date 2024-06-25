@@ -39,12 +39,13 @@ password: #Marvinbreezy4
 
 ## SAMPLE UI DESIGNS FROM THE APP
 ![Screenshot_20240625-111234](https://github.com/RusokeMarvin/MiniApp/assets/101735380/45f4a5d3-56f6-4e6d-8a7c-b07a6ee80cd8)
+![Screenshot_20240625-104737](https://github.com/RusokeMarvin/MiniApp/assets/101735380/66b3e0d3-b1b2-4972-82b4-1fe466dbb4e1)
+![Screenshot_20240625-104731](https://github.com/RusokeMarvin/MiniApp/assets/101735380/9e7fa369-f661-4b10-b846-6bc4bdd4e3de)
 ![Screenshot_20240625-105116](https://github.com/RusokeMarvin/MiniApp/assets/101735380/b82ae761-6371-4366-9f85-7d6e9030f4e3)
 ![Screenshot_20240625-105101](https://github.com/RusokeMarvin/MiniApp/assets/101735380/3f88b97d-3882-41fd-ad66-75ee4ff1dce8)
 ![Screenshot_20240625-105045](https://github.com/RusokeMarvin/MiniApp/assets/101735380/48a143a1-bdc1-428c-bbbc-f888708364f7)
 ![Screenshot_20240625-104904](https://github.com/RusokeMarvin/MiniApp/assets/101735380/dc05ee04-50e1-42c9-b450-026e4c99703d)
 ![Screenshot_20240625-104900](https://github.com/RusokeMarvin/MiniApp/assets/101735380/7399fafb-aa40-4d8f-8ab5-16da85f5a55d)
-![Screenshot_20240625-104737](https://github.com/RusokeMarvin/MiniApp/assets/101735380/66b3e0d3-b1b2-4972-82b4-1fe466dbb4e1)
-![Screenshot_20240625-104731](https://github.com/RusokeMarvin/MiniApp/assets/101735380/9e7fa369-f661-4b10-b846-6bc4bdd4e3de)
+
 
 
