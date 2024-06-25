@@ -7,7 +7,7 @@ This is a Simple Word Game and below are the Actions/functionalities required:
 
 
 ## FIREBASE INTEGRATION
-I used firebase realtime database where i was able to import my words.json into it. The file contains the following data whish is needed to get 10/10 scores;
+I used firebase realtime database where i was able to import my words.json into it. The file contains the following data which is needed to get 10/10 scores;
 {
   "words": {
     "0": "apple",
@@ -25,7 +25,7 @@ I used firebase realtime database where i was able to import my words.json into 
 
 ## APP INSTALLATION COMMANDS(commands in bracket)
 1. Open Terminal
-2. Clone the Repository(https://github.com/RusokeMarvin/MiniApp.git) OR (just download the folder as a zip file from here)
+2. Clone the Repository(git clone https://github.com/RusokeMarvin/MiniApp.git) OR (just download the folder as a zip file from here)
 3. Navigate to the Project Directory(cd MiniApp)
 4. Install Dependencies(flutter pub get) or (Goto pubspec.yaml file and press ctrl+s): incase of any dependency conflicts adjust on the dependency versions
 5.  Run the Flutter App(flutter run)
@@ -33,7 +33,7 @@ I used firebase realtime database where i was able to import my words.json into 
 
 ## AUTHENTICATION
 1. Create an account using the register page and you will be automatically logged in
-2. OR login use my credentials below:
+2. OR login using my credentials below:
 email: marvinrusoke@gmail.com
 password: #Marvinbreezy4
 
